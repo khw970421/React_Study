@@ -14,6 +14,7 @@ function Counter({ onIncrease, onDecrease, idx }) {
     val = "second";
   } else val = "third";
   const dispatch = useDispatch();
+  
   const state = useSelector((state) => ({
     state,
   })).state.countReducer[val];

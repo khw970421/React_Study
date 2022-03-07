@@ -3,24 +3,23 @@ export const DECREASE_COUNT = "DECREASE_COUNT";
 export const TOTAL_INCREASE_COUNT = "TOTAL_INCREASE_COUNT";
 export const TOTAL_DECREASE_COUNT = "TOTAL_DECREASE_COUNT";
 
-export const increaseCount = (count, countTarget) => {
-  const newCount = count + 1;
+export const increaseCount = (count, key) => {
+  console.log(count, key);
   return {
     type: INCREASE_COUNT,
     payload: {
-      newCount,
-      countTarget,
+      count,
+      key,
     },
   };
 };
 
-export const decreaseCount = (count, countTarget) => {
-  const newCount = count - 1;
+export const decreaseCount = (count, key) => {
   return {
     type: DECREASE_COUNT,
     payload: {
-      newCount,
-      countTarget,
+      count,
+      key,
     },
   };
 };

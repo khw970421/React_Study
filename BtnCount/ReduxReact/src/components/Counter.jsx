@@ -3,38 +3,14 @@
 
 //지역 상태관리
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { increaseCount, decreaseCount } from "../redux/action";
 
-function Counter({ onIncrease, onDecrease, idx }) {
-  let val;
-  if (idx === 1) {
-    val = "first";
-  } else if (idx === 2) {
-    val = "second";
-  } else val = "third";
-  const dispatch = useDispatch();
-  
-  const state = useSelector((state) => ({
-    state,
-  })).state.countReducer[val];
-
-  const handleIncrease = () => {
-    dispatch(increaseCount(state, val));
-    onIncrease();
-  };
-
-  const handleDecrease = () => {
-    dispatch(decreaseCount(state, val));
-    onDecrease();
-  };
-
+function Counter({ onIncrease, onDecrease, val }) {
   return (
     <div>
-      <span style={{ fontSize: 40 }}>{state}</span>
+      <span style={{ fontSize: 40 }}>{val}</span>
       <br />
-      <button onClick={handleIncrease}>+</button>
-      <button onClick={handleDecrease}>-</button>
+      <button onClick={onIncrease}>+</button>
+      <button onClick={onDecrease}>-</button>
     </div>
   );
 }

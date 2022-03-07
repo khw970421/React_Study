@@ -1,44 +1,45 @@
 import Counter from "./components/Counter";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { totalIncreaseCount, totalDecreaseCount } from "./redux/action";
+import { increaseCount, decreaseCount } from "./redux/action";
 
 function App() {
-  const [totalCount, setTotalCount] = useState(0);
   const dispatch = useDispatch();
-  const nofilterstate = useSelector((state) => ({
-    state,
+  const { first, second, third, totalState } = useSelector((state) => ({
+    totalState: state.totalCountReducer,
+    first: state.countReducer.first,
+    second: state.countReducer.second,
+    third: state.countReducer.third,
   }));
-  const state = nofilterstate.state.totalCountReducer;
+
+  console.log(first, second, third);
+
+  const handleIncrease = (val, key) => {
+    console.log(val, val + 1);
+    dispatch(increaseCount(val + 1, key));
+  };
+
+  const handleDecrease = (val, key) => {
+    dispatch(decreaseCount(val - 1, key));
+  };
+
   return (
     <div>
-      TotalCount : {state}
+      TotalCount : {totalState}
       <Counter
-        onIncrease={() => {
-          dispatch(totalIncreaseCount(state));
-        }}
-        onDecrease={() => {
-          dispatch(totalDecreaseCount(state));
-        }}
-        idx={1}
+        onIncrease={() => handleIncrease(first, "first")}
+        onDecrease={() => handleDecrease(first, "first")}
+        val={first}
       ></Counter>
       <Counter
-        onIncrease={() => {
-          dispatch(totalIncreaseCount(state));
-        }}
-        onDecrease={() => {
-          dispatch(totalDecreaseCount(state));
-        }}
-        idx={2}
+        onIncrease={() => handleIncrease(second, "second")}
+        onDecrease={() => handleDecrease(second, "second")}
+        val={second}
       ></Counter>
       <Counter
-        onIncrease={() => {
-          dispatch(totalIncreaseCount(state));
-        }}
-        onDecrease={() => {
-          dispatch(totalDecreaseCount(state));
-        }}
-        idx={3}
+        onIncrease={() => handleIncrease(third, "third")}
+        onDecrease={() => handleDecrease(third, "third")}
+        val={third}
       ></Counter>
     </div>
   );

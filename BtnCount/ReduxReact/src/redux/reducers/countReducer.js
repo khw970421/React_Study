@@ -7,20 +7,20 @@ const initialState = {
 const countReducer = (state = initialState, action) => {
   switch (action.type) {
     case INCREASE_COUNT:
-      console.log(action.payload.newCount, `~~~`);
-      const target1 = action.payload.countTarget;
-      const newCount1 = action.payload.newCount;
-      const obj = {};
-      obj[target1] = newCount1;
+      const key1 = action.payload.key;
+      const count1 = action.payload.count;
+      const obj1 = {};
+      obj1[key1] = count1;
+      console.log(key1, count1);
       return {
         ...state,
-        ...obj,
+        ...obj1,
       };
     case DECREASE_COUNT:
-      const target2 = action.payload.countTarget;
-      const newCount2 = action.payload.newCount;
+      const key2 = action.payload.key;
+      const count2 = action.payload.count;
       const obj2 = {};
-      obj2[target2] = newCount2;
+      obj2[key2] = count2;
       return {
         ...state,
         ...obj2,

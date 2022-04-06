@@ -1,7 +1,8 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState, useRef } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import Item from "./Item";
 import Loader from "./Loader";
+import axios from "axios";
 
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -37,7 +38,8 @@ const AppWrap = styled.div`
 const App = () => {
   const [target, setTarget] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [itemLists, setItemLists] = useState([1]);
+  const [itemLists, setItemLists] = useState([]);
+  const ref = useRef(1);
 
   useEffect(() => {
     console.log(itemLists);
@@ -45,9 +47,11 @@ const App = () => {
 
   const getMoreItem = async () => {
     setIsLoaded(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    let Items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    setItemLists((itemLists) => itemLists.concat(Items));
+    const res = await axios.get(
+      `https://jsonplaceholder.typicode.com/posts/${ref.current}/comments`
+    );
+    ref.current++;
+    setItemLists((itemLists) => [...itemLists, ...res.data]);
     setIsLoaded(false);
   };
 
@@ -75,7 +79,7 @@ const App = () => {
       <GlobalStyle />
       <AppWrap>
         {itemLists.map((v, i) => {
-          return <Item number={i + 1} key={i} />;
+          return <Item number={i + 1} key={i} content={v} />;
         })}
         <div ref={setTarget} className="Target-Element">
           {isLoaded && <Loader />}

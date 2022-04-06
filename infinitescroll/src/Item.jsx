@@ -43,15 +43,15 @@ const ItemWrap = styled.div`
   }
 `;
 
-const Item = ({ number }) => {
+const Item = ({ number, content }) => {
   return (
     <ItemWrap>
       <div className="ItemWrap">
         <div className="ItemWrap-Top ">{number}</div>
         <div className="ItemWrap-Body">
-          <div className="ItemWrap-Body-Title " />
-          <div className="ItemWrap-Body-Title " />
-          <div className="ItemWrap-Body-Title " />
+          <div className="ItemWrap-Body-Title ">{content.name}</div>
+          <div className="ItemWrap-Body-Title ">{content.email}</div>
+          <div className="ItemWrap-Body-Title ">{content.postId}</div>
         </div>
       </div>
     </ItemWrap>

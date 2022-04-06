@@ -51,6 +51,10 @@ const App = () => {
       `https://jsonplaceholder.typicode.com/posts/${ref.current}/comments`
     );
     ref.current++;
+    // 다른 API였다면 Error
+    if (res.data.length === 0) {
+      alert("마지막 페이지입니다.");
+    }
     setItemLists((itemLists) => [...itemLists, ...res.data]);
     setIsLoaded(false);
   };

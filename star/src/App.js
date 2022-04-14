@@ -1,5 +1,5 @@
-import Grade from "./Grade";
-import FixGrade from "./FixGrade";
+import Grade from "./NonFixGrade/Grade";
+import FixGrade from "./FixGrade/FixGrade";
 import { useState } from "react";
 function App() {
   const [star, setStar] = useState([]);
@@ -14,6 +14,7 @@ function App() {
         onClickCheck={true}
       />
       <FixGrade />
+      <FixGrade percent={15} size={400} />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import Grade from "./Grade";
+import FixGrade from "./FixGrade";
 import { useState } from "react";
 function App() {
   const [star, setStar] = useState([]);
@@ -12,6 +13,7 @@ function App() {
         size={50}
         onClickCheck={true}
       />
+      <FixGrade />
     </div>
   );
 }

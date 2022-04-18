@@ -3,11 +3,15 @@ import { getRepository } from "./axios";
 import RoadJibunAddress from "./RoadJibunAddress";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import styled from "styled-components";
-/*eslint-disable*/
 
-const paginationCount = 5;
-
-const Page = ({ clickAddress, currentPage = 1, countPerPage = 5 }) => {
+const Page = ({
+  clickAddress = (address) => {
+    console.log("선택된 address 정보 제공", address);
+  },
+  currentPage = 1,
+  countPerPage = 5,
+  paginationCount = 5,
+}) => {
   const refContainer = useRef(1);
   const [inputValue, setInputValue] = useState("");
   const [searchAddressArr, setSearchAddressArr] = useState([]);
@@ -87,7 +91,7 @@ const Page = ({ clickAddress, currentPage = 1, countPerPage = 5 }) => {
   };
   const findRight = () => {
     // 페이지네이션의 마지막 IDX에서 countPerPage를 곱한 것보다 전체 TotalCount가 크다면 그 이후가 존재하므로 if문 실행
-    // TotalCount가 작다면 그 이후가 더 존재하지 않으므로 else문 alert 실행 
+    // TotalCount가 작다면 그 이후가 더 존재하지 않으므로 else문 alert 실행
     if (
       paginationCountState[paginationCountState.length - 1] * countPerPage <
       Number(searchTotalCount)

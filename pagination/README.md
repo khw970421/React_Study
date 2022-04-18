@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# Pagination 구현하기
+>주소 API를 이용하여 페이지네이션을 구현하기
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* 주소 API의 경우 `.env` 파일로 `REACT_APP_SERVICE_KEY`를 처리했다. 
 
-## Available Scripts
+## Page 컴포넌트의 매개변수
+1. clickAddress  : 부모컴포넌트에서 추후 해당 주소를 눌렀을때 처리할 동작을 정의한다.
+2. currentPage : 페이지의 시작위치를 1로 처리해준다. (변경은 하지않도록한다.)
+3. countPerPage : Page당 주소를 몇개 보여줄지를 정한다.
+4. paginationCount : 페이지네이션의 Page를 몇개로 설정하여 클릭할 수 있게 만들지 처리한다. 
 
-In the project directory, you can run:
+## 사용한 기술 스택
+>react, react-icons, styled-components , http-proxy-middleware , axios
 
-### `npm start`
+## 동작 영상 및 추가 설명 링크
+[노션 링크](https://khw970421.notion.site/f4be5f4f1b6540c99dfaaf0c905aec6a)
+해당 링크의 결과보기에서 동작 영상들을 추가로 확인할 수 있습니다. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 해당 컴포넌트의 효과
+> countPerPage와 paginationCount를 설정하여 필요한 만큼의 주소결과와 page 갯수를 유동적으로 매개변수를 통해 바꿔서 처리할 수 있다. 
+ 

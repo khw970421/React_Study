@@ -15,12 +15,12 @@ function App() {
   console.log(first, second, third);
 
   const handleIncrease = (val, key) => {
-    dispatch(increaseCount(val + 1, key));
+    dispatch(increaseCount(val, key));
     dispatch(totalIncreaseCount(totalState));
   };
 
   const handleDecrease = (val, key) => {
-    dispatch(decreaseCount(val - 1, key));
+    dispatch(decreaseCount(val, key));
     dispatch(totalDecreaseCount(totalState));
   };
 
